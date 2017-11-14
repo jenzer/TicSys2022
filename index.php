@@ -23,18 +23,12 @@ include_once 'config/config.php';
             <div id="menu">
                 <ul>
                     <?php
-                    $menu = array(
-                        URI_HOME => 'Home',
-                        URI_EVENTS => 'Events',
-                        URI_FAQ => 'FAQ',
-                        URI_KONTAKT => 'Kontakt'
-                    );
-                    foreach ($menu as $href => $title) {
+                    $currentUri = getCurrentURI();
+                    foreach (getMenu() as $href => $title) {
                         $liContent = $title;
-                        if ($href != strtolower($_SERVER['REQUEST_URI'])) {
+                        if ($href != $currentUri) {
                             $liContent = "<a href=\"$href\">$title</a>";
                         }
-
                         echo "<li>$liContent</li>\n";
                     }
                     ?>
@@ -43,7 +37,7 @@ include_once 'config/config.php';
 
             <div id="content">
                 <?php
-                switch ($_SERVER['REQUEST_URI']) {
+                switch (getCurrentURI()) {
                     case URI_EVENTS:
                         include_once 'controller/eventscontroller.php';
                         break;
@@ -57,3 +51,34 @@ include_once 'config/config.php';
         </div>
     </body>
 </html>
+<?php
+
+/**
+ * @return array containing all menu items in format [base href] => [title]
+ */
+function getMenu() {
+    return array(
+        URI_HOME => 'Home',
+        URI_EVENTS => 'Events',
+        URI_FAQ => 'FAQ',
+        URI_KONTAKT => 'Kontakt'
+    );
+}
+
+/**
+ * @return string the requested menu item URI
+ */
+function getCurrentURI() {
+    $menu = getMenu();
+    if (array_key_exists($_SERVER['REQUEST_URI'], $menu)) {
+        return $_SERVER['REQUEST_URI'];
+    } else {
+        foreach (array_keys(getMenu()) as $href) {
+            if(preg_match("@^$href@", $_SERVER['REQUEST_URI'])) {
+                return $href;
+            }
+        }
+    }
+    return key($menu);
+}
+?>
