@@ -1,4 +1,4 @@
-<form id="contactform" action="<?php URI_KONTAKT ?>" method="post" name="contactform">
+<form id="contactform" action="<?php echo URI_KONTAKT ?>" method="post" name="contactform">
     <label for="contactform-subject">Betreff</label>
     <input type="text" id="contactform-subject" name="subject">
 
