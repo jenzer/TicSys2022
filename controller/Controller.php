@@ -6,6 +6,8 @@
  * @author Marc Jenzer
  */
 abstract class Controller {
+    
+    protected $resourceId;
 
     /**
      * Reads collection data from model 
@@ -28,5 +30,37 @@ abstract class Controller {
      * validates and stores sent user data of a newly created resource
      */
     abstract protected function create();
+
+    public function route() {
+        $matches = array();
+        if (preg_match("@^.*/([0-9]+)@", $_SERVER['REQUEST_URI'], $matches)) {
+            $this->resourceId = $matches[1];
+            $this->show();
+        } else {
+            $this->index();
+        }
+    }
+
+    public static function encodeUrl($url) {
+        $specialChars = array(
+            "ä" => "ae",
+            "ö" => "oe",
+            "ü" => "ue",
+            "é|ê|è" => "e",
+            "á|â|à" => "a",
+            "ç" => "c"
+        );
+        foreach ($specialChars as $find => $replace) {
+            $url = preg_replace("/($find)/i", $replace, $url);
+        }
+        // Replace whitespace chars
+        $url = preg_replace('/\s/', '-', $url);
+        // Remove all remaining disallowed chars
+        $url = preg_replace('/[^a-zA-Z0-9_\-\.]/', '', $url);
+        // Replace multiple '-' chars with a single '-'
+        $url = preg_replace('/(\-)+/', '-', $url);
+        return $url;
+    }
+
 }
 
