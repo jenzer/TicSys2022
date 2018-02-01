@@ -176,6 +176,9 @@ input:focus, textarea:focus {
     background-color: #2a9898;
     border: 1px solid #5c5b5b;
 }
+.notification {
+    color: #2FACAC;
+}
 
 #faqs dt {
     background-color: #bebebe;
