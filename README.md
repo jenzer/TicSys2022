@@ -16,6 +16,7 @@ Schulprojekt für das Fach Web-Engineering an der ABB Technikerschule
         ErrorLog "logs/ticsys.local-error.log"
         CustomLog "logs/ticsys.local-access.log" common
         <Directory "C:/Data/repos/ticsys-continuous">
+            AllowOverride All
             Require all granted
         </Directory>
     </VirtualHost>
