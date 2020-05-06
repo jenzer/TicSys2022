@@ -21,10 +21,10 @@ include_once 'config/config.php';
 
             <div id="menu">
                 <ul>
-                    <li><a href="/home">Home</a></li>
-                    <li><a href="/events">Events</a></li>
-                    <li><a href="/faq">FAQ</a></li>
-                    <li><a href="/kontakt">Kontakt</a></li>
+                    <li><a href="<?php echo URI_HOME ?>">Home</a></li>
+                    <li><a href="<?php echo URI_EVENTS ?>">Events</a></li>
+                    <li><a href="<?php echo URI_FAQ ?>">FAQ</a></li>
+                    <li><a href="<?php echo URI_KONTAKT ?>">Kontakt</a></li>
                 </ul>
             </div>
 
