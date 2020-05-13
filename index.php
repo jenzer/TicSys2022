@@ -15,7 +15,7 @@ include_once 'config/config.php';
         <div id="wrap">
             <div id="header">
                 <div id="logo">
-                    <a href="/home"><img src="/images/logo-white.png" alt="TicSys Logo" width="295" height="70" /></a>
+                    <a href="/home"><img src="/images/logo-white.png" alt="TicSys Logo" width="295" height="70"/></a>
                 </div>
             </div>
 
@@ -23,10 +23,10 @@ include_once 'config/config.php';
                 <ul>
                     <?php
                     $menu = array(
-                        '/home' => 'Home',
-                        '/events' => 'Events',
-                        '/faq' => 'FAQ',
-                        '/kontakt' => 'Kontakt'
+                        URI_HOME => 'Home',
+                        URI_EVENTS => 'Events',
+                        URI_FAQ => 'FAQ',
+                        URI_KONTAKT => 'Kontakt'
                     );
                     foreach ($menu as $href => $title) {
                         $liContent = $title;
