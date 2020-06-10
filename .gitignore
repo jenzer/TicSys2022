@@ -1,2 +1,6 @@
 /nbproject/
 /nbproject/private/
+/.idea
+/composer.lock
+/vendor
+/vhost.template.local
