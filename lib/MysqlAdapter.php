@@ -14,7 +14,7 @@ final class MysqlAdapter {
         $this->user = $user;
         $this->password = $password;
         $this->db = $db;
-        $this->log = new KLogger($_SERVER['DOCUMENT_ROOT'] . '/logs/', KLogger::INFO);
+        $this->log = new Katzgrau\KLogger\Logger($_SERVER['DOCUMENT_ROOT'] . '/logs/', Psr\Log\LogLevel::INFO);
 
         $this->open();
     }
