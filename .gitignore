@@ -1,6 +1,5 @@
-/nbproject/
-/nbproject/private/
+/.idea/
 /vendor/
 /logs/
 composer.lock
-/.idea
+vhost.template

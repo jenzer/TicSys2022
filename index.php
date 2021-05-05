@@ -7,7 +7,7 @@ include_once 'config/config.php';
         <title>TicSys</title>
         <meta name="description" content="TicSys ist eine Applikation zum Vertrieb von Event-Eintrittskarten.">
         <meta name="author" content="Marc Jenzer">
-        <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="/css/modern-normalize.css">
         <link rel="stylesheet" type="text/css" href="/css/application.css">
     </head>
     <body>
