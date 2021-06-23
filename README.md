@@ -5,21 +5,18 @@ Schulprojekt für das Fach Web-Engineering an der ABB Technikerschule
 
     <VirtualHost *:80>
         ServerName localhost
-        ServerAlias localhost
-        DocumentRoot "C:/Apache24/htdocs"
+        DocumentRoot "C:/xampp/htdocs"
     </VirtualHost>
     
     <VirtualHost *:80>
+        ServerAdmin marc.jenzer@doz.abbts.ch
+        DocumentRoot "C:/Data/repos/ticsys-continuous"
         ServerName ticsys.local
-        ServerAlias ticsys.local
-        ServerAdmin jem@semabit.ch
-        DocumentRoot "C:/DATA/ticsys/web"
-        ErrorLog "C:/DATA/ticsys/logs/error.log"
-        CustomLog "C:/DATA/ticsys/logs/access.log" common
-    
-        <Directory "C:/DATA/ticsys/web">    
-            Options Indexes FollowSymLinks
-            AllowOverride All   
+        ServerAlias www.ticsys.local
+        ErrorLog "logs/ticsys.local-error.log"
+        CustomLog "logs/ticsys.local-access.log" common
+        <Directory "C:/Data/repos/ticsys-continuous">
+            AllowOverride All
             Require all granted
         </Directory>
     </VirtualHost>
