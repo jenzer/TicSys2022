@@ -8,8 +8,7 @@ include_once 'config/config.php';
         <title>TicSys</title>
         <meta name="description" content="TicSys ist eine Applikation zum Vertrieb von Event-Eintrittskarten.">
         <meta name="author" content="Marc Jenzer">
-        <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="/css/modern-normalize.css">
         <link rel="stylesheet" type="text/css" href="/css/application.css">
     </head>
     <body>
@@ -17,7 +16,7 @@ include_once 'config/config.php';
         <div id="wrap">
             <div id="header">
                 <div id="logo">
-                    <a href="/home"><img src="/images/logo-white.png" alt="TicSys Logo" width="295" height="70" /></a>
+                    <a href="/home"><img src="/images/logo-white.png" alt="TicSys Logo" width="295" height="70"/></a>
                 </div>
             </div>
 
