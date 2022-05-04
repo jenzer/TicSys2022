@@ -1,0 +1,5 @@
+/.idea/
+/vendor/
+/logs/
+composer.lock
+vhost.template
