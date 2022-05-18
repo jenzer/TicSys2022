@@ -15,16 +15,27 @@ include_once 'config/config.php';
         <div id="wrap">
             <div id="header">
                 <div id="logo">
-                    <a href="/home"><img src="/images/logo-white.png" alt="TicSys Logo" width="295" height="70" /></a>
+                    <a href="/home"><img src="/images/logo-white.png" alt="TicSys Logo" width="295" height="70"/></a>
                 </div>
             </div>
 
             <div id="menu">
                 <ul>
-                    <li><a href="<?php echo URI_HOME ?>">Home</a></li>
-                    <li><a href="<?php echo URI_EVENTS ?>">Events</a></li>
-                    <li><a href="<?php echo URI_FAQ ?>">FAQ</a></li>
-                    <li><a href="<?php echo URI_KONTAKT ?>">Kontakt</a></li>
+                    <?php
+                    $menu = array(
+                        URI_HOME => 'Home',
+                        URI_EVENTS => 'Events',
+                        URI_FAQ => 'FAQ',
+                        URI_KONTAKT => 'Kontakt'
+                    );
+                    foreach ($menu as $href => $title) {
+                        $liContent = $title;
+                        if ($href != strtolower($_SERVER['REQUEST_URI'])) {
+                            $liContent = "<a href=\"$href\">$title</a>";
+                        }
+                        echo "<li>$liContent</li>\n";
+                    }
+                    ?>
                 </ul>
             </div>
 
