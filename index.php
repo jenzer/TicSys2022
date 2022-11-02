@@ -25,7 +25,7 @@ include_once 'config/config.php';
                     <?php
                     $currentUri = getCurrentURI();
                     foreach (getMenu() as $href => $title) {
-                        echo "<li><a href=\"$href\" ".(($href == $currentUri) ? "class=\"selected\" ": "").">$title</a></li>\n";
+                        echo "<li><a href=\"$href\" " . (($href == $currentUri) ? "class=\"selected\" " : "") . ">$title</a></li>\n";
                     }
                     ?>
                 </ul>
@@ -33,13 +33,18 @@ include_once 'config/config.php';
 
             <div id="content">
                 <?php
+                $controller = null;
                 switch (getCurrentURI()) {
                     case URI_EVENTS:
-                        include_once 'controller/eventscontroller.php';
+                        include_once 'controller/EventController.php';
+                        $controller = new EventController();
                         break;
                     case URI_KONTAKT:
                         include_once 'controller/contactcontroller.php';
                         break;
+                }
+                if ($controller != null) {
+                    $controller->route();
                 }
                 ?>
             </div>
