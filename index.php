@@ -10,8 +10,9 @@ include_once 'config/config.php';
         <meta name="author" content="Marc Jenzer">
         <link rel="stylesheet" type="text/css" href="/css/modern-normalize.css">
         <link rel="stylesheet" type="text/css" href="/css/application.css">
+        <script src="/js/timer.js"></script>
     </head>
-    <body>
+    <body onload="setDateTime()">
 
         <div id="wrap">
             <div id="header">
@@ -55,7 +56,7 @@ include_once 'config/config.php';
             </div>
 
             <div id="footer">
-                <p>Copyright &copy; 2017 TicSys, <?php echo date("d.m.Y H:i:s"); ?></p>
+                <p>Copyright &copy; 2017 TicSys, <span id="datetime"><?php echo date("d.m.Y H:i:s"); ?></span></p>
             </div>
         </div>
         <a id="feedback" href="<?php echo URI_KONTAKT ?>"><img src="/images/feedback.png" border="0"></a>
