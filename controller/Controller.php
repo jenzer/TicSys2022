@@ -6,7 +6,7 @@
  * @author Marc Jenzer
  */
 abstract class Controller {
-    
+
     protected $resourceId;
 
     /**
@@ -32,12 +32,23 @@ abstract class Controller {
     abstract protected function create();
 
     public function route() {
-        $matches = array();
-        if (preg_match("@^.*/([0-9]+)@", $_SERVER['REQUEST_URI'], $matches)) {
-            $this->resourceId = $matches[1];
-            $this->show();
-        } else {
-            $this->index();
+        switch ($_SERVER['REQUEST_METHOD']) {
+            case 'GET':
+                $matches = array();
+                if (preg_match("@^.*/([0-9]+)@", $_SERVER['REQUEST_URI'], $matches)) {
+                    $this->resourceId = $matches[1];
+                    $this->show();
+                } elseif (preg_match("@/new$@", $_SERVER['REQUEST_URI'])) {
+                    $this->init();
+                } else {
+                    $this->index();
+                }
+                break;
+            case 'POST':
+                $this->create();
+                break;
+            default:
+                break;
         }
     }
 

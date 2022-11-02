@@ -40,7 +40,8 @@ include_once 'config/config.php';
                         $controller = new EventController();
                         break;
                     case URI_KONTAKT:
-                        include_once 'controller/contactcontroller.php';
+                        include_once 'controller/ContactController.php';
+                        $controller = new ContactController();
                         break;
                 }
                 if ($controller != null) {
