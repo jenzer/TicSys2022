@@ -39,6 +39,10 @@ include_once 'config/config.php';
                         include_once 'controller/EventController.php';
                         $controller = new EventController();
                         break;
+                    case URI_FAQ:
+                        include_once 'controller/FAQController.php';
+                        $controller = new FAQController();
+                        break;
                     case URI_KONTAKT:
                         include_once 'controller/ContactController.php';
                         $controller = new ContactController();
