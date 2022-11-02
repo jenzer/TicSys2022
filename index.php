@@ -10,6 +10,7 @@ include_once 'config/config.php';
         <meta name="author" content="Marc Jenzer">
         <link rel="stylesheet" type="text/css" href="/css/modern-normalize.css">
         <link rel="stylesheet" type="text/css" href="/css/application.css">
+        <script src="/js/application.js"></script>
         <script src="/js/timer.js"></script>
     </head>
     <body onload="setDateTime()">
