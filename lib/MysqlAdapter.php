@@ -1,6 +1,7 @@
 <?php
 
-final class MysqlAdapter {
+final class MysqlAdapter
+{
 
     private $host;
     private $user;
@@ -9,7 +10,8 @@ final class MysqlAdapter {
     private $con;
     private $log;
 
-    function __construct($host, $user, $password, $db) {
+    function __construct($host, $user, $password, $db)
+    {
         $this->host = $host;
         $this->user = $user;
         $this->password = $password;
@@ -19,11 +21,13 @@ final class MysqlAdapter {
         $this->open();
     }
 
-    public function __destruct() {
+    public function __destruct()
+    {
         $this->close();
     }
 
-    private function open() {
+    private function open()
+    {
         $this->con = new mysqli($this->host, $this->user, $this->password, $this->db);
         if ($this->con->connect_errno) {
             echo 'DB Error: ' . $this->con->connect_error;
@@ -33,14 +37,16 @@ final class MysqlAdapter {
         }
     }
 
-    private function close() {
+    private function close()
+    {
         if ($this->con != null) {
             $this->con->close();
             $this->con = null;
         }
     }
 
-    public function getFAQs($state = FAQ::STATE_ACTIVE) {
+    public function getFAQs($state = FAQ::STATE_ACTIVE)
+    {
         $list = array();
         $res = $this->con->query("SELECT * FROM faqs WHERE state='$state' ORDER BY id");
         while ($row = $res->fetch_assoc()) {
@@ -51,7 +57,8 @@ final class MysqlAdapter {
         return $list;
     }
 
-    public function isUsernameAvailable($username) {
+    public function isUsernameAvailable($username)
+    {
         $res = $this->con->query("SELECT username FROM customers WHERE username='$username'");
         if ($res->num_rows > 0) {
             $res->free();
@@ -60,8 +67,9 @@ final class MysqlAdapter {
         return true;
     }
 
-    public function getUserByUsername($username) {
-        $res = $this->con->query("SELECT * FROM customers WHERE username='$username' AND state='" . Customer::STATE_ACTIVE . "'");
+    public function getUserByUsername($username)
+    {
+        $res = $this->con->query("SELECT * FROM customers WHERE sername='$username' AND state='" . Customer::STATE_ACTIVE . "'");
         if ($row = $res->fetch_assoc()) {
             $customer = new Customer($row['id']);
             $customer->setUserName($row['username']);
@@ -72,14 +80,15 @@ final class MysqlAdapter {
             $customer->setEmail($row['email']);
             $customer->setState($row['state']);
             $customer->setRegistrationDate($row['date']);
-            
+
             $res->free();
             return $customer;
         }
         return null;
     }
 
-    public function insertCustomer(Customer $customer) {
+    public function insertCustomer(Customer $customer)
+    {
         $sql = "INSERT INTO customers ";
         $sql .= "(username, password, lastname, firstname, phone, email, date) ";
         $sql .= "VALUES (";
@@ -101,15 +110,18 @@ final class MysqlAdapter {
         return 0;
     }
 
-    public function __sleep() {
+    public function __sleep()
+    {
         return array('host', 'user', 'password', 'db');
     }
 
-    public function __wakeup() {
+    public function __wakeup()
+    {
         $this->open();
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         return "Host: {$this->host}, DB: {$this->db}, user: {$this->user}";
     }
 
