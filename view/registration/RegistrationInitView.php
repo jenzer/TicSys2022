@@ -5,7 +5,7 @@ class RegistrationInitView extends View {
     public function display() {
         echo "<h1>Registration</h1>";
         if (!empty($this->notification)) {
-            echo "<p>{$this->notification}</p>";
+            echo "<p class=\"notification\">{$this->notification}</p>";
         }
         echo <<<FORM
         <form id="registrationform" action="{$this->registrationUri}" method="post" name="registrationform">
