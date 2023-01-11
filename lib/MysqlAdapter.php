@@ -93,10 +93,10 @@ final class MysqlAdapter {
         if ($this->con->query($sql)) {
             $id = $this->con->insert_id;
             $customer->setId($id);
-            $this->log->logInfo("New customer successfully stored to database: $customer");
+            $this->log->info("New customer successfully stored to database: $customer");
             return $id;
         } else {
-            $this->log->logError("Error: {$this->con->error}, sql: {$sql}");
+            $this->log->error("Error: {$this->con->error}, sql: {$sql}");
         }
         return 0;
     }
