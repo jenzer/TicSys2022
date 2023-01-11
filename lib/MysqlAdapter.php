@@ -69,7 +69,7 @@ final class MysqlAdapter
 
     public function getUserByUsername($username)
     {
-        $res = $this->con->query("SELECT * FROM customers WHERE sername='$username' AND state='" . Customer::STATE_ACTIVE . "'");
+        $res = $this->con->query("SELECT * FROM customers WHERE username='$username' AND state='" . Customer::STATE_ACTIVE . "'");
         if ($row = $res->fetch_assoc()) {
             $customer = new Customer($row['id']);
             $customer->setUserName($row['username']);
